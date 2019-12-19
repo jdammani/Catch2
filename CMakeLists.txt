@@ -13,6 +13,12 @@ option(CATCH_ENABLE_COVERAGE "Generate coverage for codecov.io" OFF)
 option(CATCH_INSTALL_DOCS "Install documentation alongside library" ON)
 option(CATCH_INSTALL_EXTRAS "Install extras alongside library" ON)
 
+if (CATCH_ENABLE_COVERAGE)
+    set(ENABLE_COVERAGE ON CACHE BOOL "Enable coverage build." FORCE)
+    find_package(codecov)
+    list(APPEND LCOV_REMOVE_PATTERNS "'/usr/*'")
+endif()
+
 
 set(CATCH_CMAKE_CONFIG_DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/Catch2")
 
@@ -60,6 +66,13 @@ endif()
 if(CATCH_BUILD_EXTRA_TESTS)
     add_subdirectory(tests/ExtraTests)
 endif()
+
+# This needs to be called after the last coverage target has been added!
+if (CATCH_ENABLE_COVERAGE)
+    coverage_evaluate()
+endif()
+
+
 
 #option(CATCH_USE_VALGRIND "Perform SelfTests with Valgrind" OFF)
 #option(CATCH_ENABLE_WERROR "Enable all warnings as errors" ON)

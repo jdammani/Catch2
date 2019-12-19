@@ -90,10 +90,7 @@ add_executable(SelfTest ${TEST_SOURCES})
 target_link_libraries(SelfTest PRIVATE Catch2)
 
 if (CATCH_ENABLE_COVERAGE)
-    set(ENABLE_COVERAGE ON CACHE BOOL "Enable coverage build." FORCE)
-    find_package(codecov)
     add_coverage(SelfTest)
-    list(APPEND LCOV_REMOVE_PATTERNS "'/usr/*'")
     coverage_evaluate()
 endif()
 

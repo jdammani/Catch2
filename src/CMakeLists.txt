@@ -268,6 +268,10 @@ add_library(Catch2Main STATIC
 add_library(Catch2::Catch2Main ALIAS Catch2Main)
 target_link_libraries(Catch2Main PUBLIC Catch2)
 
+if (CATCH_ENABLE_COVERAGE)
+    add_coverage(Catch2Main)
+endif()
+
 
 
 if (NOT_SUBPROJECT)
