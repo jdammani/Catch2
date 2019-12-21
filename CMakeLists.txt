@@ -13,6 +13,9 @@ option(CATCH_ENABLE_COVERAGE "Generate coverage for codecov.io" OFF)
 option(CATCH_INSTALL_DOCS "Install documentation alongside library" ON)
 option(CATCH_INSTALL_EXTRAS "Install extras alongside library" ON)
 
+
+# Provide path for scripts
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/CMake")
 if (CATCH_ENABLE_COVERAGE)
     set(ENABLE_COVERAGE ON CACHE BOOL "Enable coverage build." FORCE)
     find_package(codecov)
@@ -32,9 +35,6 @@ endif()
 
 
 project(Catch2 LANGUAGES CXX VERSION 2.10.2)
-
-# Provide path for scripts
-list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/CMake")
 
 include(GNUInstallDirs)
 include(CMakePackageConfigHelpers)
