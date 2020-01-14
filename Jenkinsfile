@@ -75,7 +75,7 @@ pipeline
               						echo "Building Catch2"
 							sh "echo $PWD"
 							//sh "cd ${WORKSPACE}/src/;bash ./build-hworld.sh ${WORKSPACE}/src/"
-              sh "cd ${WORKSPACE}/CMake;cmake -Bbuild -H. -DBUILD_TESTING=OFF"
+              sh "cd ${WORKSPACE};cmake -Bbuild -H. -DBUILD_TESTING=OFF"
 							sh "zip -r build.zip build"
               echo "completed build"	              
 						}
