@@ -72,10 +72,10 @@ pipeline
 					{
 					script 
 						{		
-              echo "Buildding Catch2"
+              						echo "Building Catch2"
 							sh "echo $PWD"
 							//sh "cd ${WORKSPACE}/src/;bash ./build-hworld.sh ${WORKSPACE}/src/"
-              sh "cd Catch2;cmake -Bbuild -H. -DBUILD_TESTING=OFF"
+              sh "cd ${WORKSPACE}/Catch2;cmake -Bbuild -H. -DBUILD_TESTING=OFF"
 							sh "zip -r build.zip build"
               echo "completed build"	              
 						}
